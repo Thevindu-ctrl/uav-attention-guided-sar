@@ -71,7 +71,7 @@ This repository utilizes a clean, flat directory layout to eliminate path confus
     ├── requirements.txt                         # Managed dependencies listing (with headless OpenCV & SAHI)
     ├── Visdrone.ipynb                           # Notebook mapping out the training and validation loops
     ├── visdrone_human.yaml                      # Dataset anchors and tracking parameter paths
-    ├── 10955873_PUSL3199_Individual_Project.pdf # Complete Academic Thesis & Research Report
+    ├── SARreport.pdf                            # Complete Academic Thesis & Research Report
     ├── best.pt                                  # Optimized, attention-guided production model weights
     ├── yolov8n.pt                               # Baseline benchmark model (Nano profile)
     ├── rtdetr-l.pt                               # Baseline benchmark model (Small profile)
