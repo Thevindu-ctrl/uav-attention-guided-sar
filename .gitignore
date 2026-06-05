@@ -1,0 +1,17 @@
+# Python operational caches
+__pycache__
+.py[cod]
+$py.class
+
+# Jupyter environment artifacts
+.ipynb_checkpoints
+.ipynb_checkpoints
+
+# Local desktop configuration files
+.DS_Store
+Thumbs.db
+
+# Large archive blocks
+.zip
+.rar
+.tar.gz

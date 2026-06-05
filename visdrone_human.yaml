@@ -1,0 +1,7 @@
+path: /content/drive/MyDrive/Visdrone/VisDrone_YOLO
+train: images/train
+val: images/val
+test: images/test
+nc: 1
+names:
+  0: human
