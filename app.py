@@ -211,7 +211,7 @@ def process_frame(frame, model, sahi_model, use_sahi,
             det_lat, det_lng = pixel_to_gps(cx, cy, drone_lat, drone_lng, w, h, alt, heading_deg=heading)
             
             detections.append({
-                'confidence': pred.score.value, 'lat': det_lat, 'lng': det_lng, 
+                'confidence': float(pred.score.value), 'lat': det_lat, 'lng': det_lng, 
                 'cx': cx, 'cy': cy, 
                 'bbox': [int(bbox.minx), int(bbox.miny), int(bbox.maxx), int(bbox.maxy)] 
             })
@@ -250,7 +250,7 @@ def build_map(all_detections, telemetry_df, processed_frames, base_lat, base_lng
     if not telemetry_df.empty:
         valid_frames = telemetry_df[telemetry_df['frame_id'].isin(processed_frames)]
         if not valid_frames.empty:
-            path_coords = valid_frames[['lat', 'lng']].values.tolist()
+            path_coords = [[float(x), float(y)] for x, y in valid_frames[['lat', 'lng']].to_numpy()]
             if len(path_coords) > 1:
                 folium.PolyLine(
                     path_coords, color='#00aaff',
@@ -286,7 +286,7 @@ def build_map(all_detections, telemetry_df, processed_frames, base_lat, base_lng
             ),
             tooltip=f"Survivor #{i+1} | {det['confidence']*100:.0f}%"
         ).add_to(cluster)
-        heatmap_data.append([det['lat'], det['lng'], det['confidence']])
+        heatmap_data.append([float(det['lat']), float(det['lng']), float(det['confidence'])])
     
     if heatmap_data:
         HeatMap(heatmap_data, radius=15, blur=10, max_zoom=18).add_to(m)
@@ -610,8 +610,8 @@ with tab1:
 with tab2:
     st.subheader("🌍 TACTICAL SURVIVOR MAP")
     
-    base_lat = telemetry_df['lat'].mean() if not telemetry_df.empty else 50.3750
-    base_lng = telemetry_df['lng'].mean() if not telemetry_df.empty else -4.1370
+    base_lat = float(telemetry_df['lat'].mean()) if not telemetry_df.empty else 50.3750
+    base_lng = float(telemetry_df['lng'].mean()) if not telemetry_df.empty else -4.1370
     
     m = build_map(
         st.session_state.all_detections,
