@@ -8,3 +8,5 @@ pillow>=9.5.0
 folium>=0.14.0
 streamlit-folium>=0.13.0
 sahi>=0.11.14
+libgl1-mesa-glx
+libglib2.0-0
