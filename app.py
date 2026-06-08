@@ -5,8 +5,10 @@ try:
     import opencv_python_headless
     sys.modules['cv2'] = opencv_python_headless
 except ImportError:
-    
+  
     mock_cv2 = types.ModuleType('cv2')
+    
+
     mock_cv2.IMREAD_COLOR = 1
     mock_cv2.IMREAD_GRAYSCALE = 0
     mock_cv2.IMREAD_UNCHANGED = -1
@@ -26,8 +28,9 @@ except ImportError:
     mock_cv2.cvtColor = lambda src, code, *args, **kwargs: src
     mock_cv2.rectangle = lambda img, pt1, pt2, color, thickness=1, lineType=8, shift=0: img
     mock_cv2.putText = lambda img, text, org, fontFace, fontScale, color, thickness=1, lineType=8, bottomLeftOrigin=False: img
+    
     sys.modules['cv2'] = mock_cv2
-
+    
 import streamlit as st
 import pandas as pd
 import numpy as np
