@@ -1,15 +1,22 @@
 import sys
+import logging
 try:
     import cv2
-except ImportError:
-    # Force mock references if the system searches for missing display libraries
-    import collections
-    sys.modules['cv2'] = collections.defaultdict(lambda: None)
+except ImportError as e:
+    if "libGL.so.1" in str(e):
+        try:
+           
+            import opencv_python_headless
+            sys.modules['cv2'] = sys.modules.get('cv2', opencv_python_headless)
+            import cv2
+        except ImportError:
+            logging.error("opencv-python-headless missing. Please check requirements.txt")
+    else:
+        raise e
 
 import streamlit as st
 import pandas as pd
 import numpy as np
-import streamlit as st
 import cv2
 import json
 import math
