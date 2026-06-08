@@ -2,10 +2,10 @@ streamlit>=1.58.0
 torch>=2.12.0
 torchvision>=0.27.0
 ultralytics>=8.4.60
-opencv-python-headless>=4.13.0.92
+sahi>=0.12.0
+lapx
 numpy>=2.4.6
 pillow>=12.2.0
 folium>=0.20.0
 streamlit-folium>=0.27.2
-sahi>=0.12.0
-lapx
+opencv-python-headless>=4.13.0.92
