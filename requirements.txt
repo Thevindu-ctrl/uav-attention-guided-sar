@@ -9,3 +9,6 @@ folium>=0.20.0
 streamlit-folium>=0.27.2
 sahi>=0.12.0
 lapx
+freeglut3-dev
+libgl1-mesa-glx
+libglib2.0-0
