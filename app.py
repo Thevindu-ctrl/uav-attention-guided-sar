@@ -1,14 +1,13 @@
 import sys
-import os
 import types
 try:
-    import opencv_python_headless
-    sys.modules['cv2'] = opencv_python_headless
-except ImportError:
-  
+    import cv2
+    if not hasattr(cv2, 'IMREAD_COLOR'):
+        cv2.IMREAD_COLOR = 1
+    if not hasattr(cv2, 'setNumThreads'):
+        cv2.setNumThreads = lambda n: None
+except (ImportError, AttributeError):
     mock_cv2 = types.ModuleType('cv2')
-    
-
     mock_cv2.IMREAD_COLOR = 1
     mock_cv2.IMREAD_GRAYSCALE = 0
     mock_cv2.IMREAD_UNCHANGED = -1
@@ -20,6 +19,8 @@ except ImportError:
     mock_cv2.LINE_8 = 8
     mock_cv2.FONT_HERSHEY_SIMPLEX = 0
     mock_cv2.FONT_HERSHEY_PLAIN = 1
+    mock_cv2.setNumThreads = lambda n: None
+    mock_cv2.setUseOptimized = lambda b: None
     mock_cv2.imshow = lambda *args, **kwargs: None
     mock_cv2.waitKey = lambda *args, **kwargs: 0
     mock_cv2.destroyAllWindows = lambda *args, **kwargs: None
@@ -28,9 +29,9 @@ except ImportError:
     mock_cv2.cvtColor = lambda src, code, *args, **kwargs: src
     mock_cv2.rectangle = lambda img, pt1, pt2, color, thickness=1, lineType=8, shift=0: img
     mock_cv2.putText = lambda img, text, org, fontFace, fontScale, color, thickness=1, lineType=8, bottomLeftOrigin=False: img
-    
     sys.modules['cv2'] = mock_cv2
-    
+
+#Imports
 import streamlit as st
 import pandas as pd
 import numpy as np
