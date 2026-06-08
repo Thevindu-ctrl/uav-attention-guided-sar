@@ -12,7 +12,7 @@ except ImportError:
     mock_cv2.destroyAllWindows = lambda *args, **kwargs: None
     mock_cv2.namedWindow = lambda *args, **kwargs: None
     mock_cv2.resize = lambda src, dsize, *args, **kwargs: src
- sys.modules['cv2'] = mock_cv2
+    sys.modules['cv2'] = mock_cv2
 import streamlit as st
 import pandas as pd
 import numpy as np
