@@ -1,30 +1,44 @@
 import sys
 import os
-import logging
 import types
 try:
     import opencv_python_headless
     sys.modules['cv2'] = opencv_python_headless
 except ImportError:
+    
     mock_cv2 = types.ModuleType('cv2')
+    mock_cv2.IMREAD_COLOR = 1
+    mock_cv2.IMREAD_GRAYSCALE = 0
+    mock_cv2.IMREAD_UNCHANGED = -1
+    mock_cv2.COLOR_BGR2RGB = 4
+    mock_cv2.COLOR_RGB2BGR = 4
+    mock_cv2.COLOR_BGR2GRAY = 6
+    mock_cv2.COLOR_GRAY2BGR = 8
+    mock_cv2.LINE_AA = 16
+    mock_cv2.LINE_8 = 8
+    mock_cv2.FONT_HERSHEY_SIMPLEX = 0
+    mock_cv2.FONT_HERSHEY_PLAIN = 1
     mock_cv2.imshow = lambda *args, **kwargs: None
     mock_cv2.waitKey = lambda *args, **kwargs: 0
     mock_cv2.destroyAllWindows = lambda *args, **kwargs: None
     mock_cv2.namedWindow = lambda *args, **kwargs: None
     mock_cv2.resize = lambda src, dsize, *args, **kwargs: src
+    mock_cv2.cvtColor = lambda src, code, *args, **kwargs: src
+    mock_cv2.rectangle = lambda img, pt1, pt2, color, thickness=1, lineType=8, shift=0: img
+    mock_cv2.putText = lambda img, text, org, fontFace, fontScale, color, thickness=1, lineType=8, bottomLeftOrigin=False: img
     sys.modules['cv2'] = mock_cv2
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 import json
 import math
+import gc
 from datetime import datetime
 from PIL import Image
 import folium
 from streamlit_folium import st_folium
 from folium.plugins import HeatMap, MarkerCluster
-
-
 
 
 # UAV SAR MISSION CONTROL SYSTEM | University of Plymouth 2026
