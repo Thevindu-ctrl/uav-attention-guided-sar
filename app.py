@@ -1,23 +1,26 @@
 import sys
+import os 
 import logging
+
+# CV2 
 try:
     import cv2
 except ImportError as e:
     if "libGL.so.1" in str(e):
         try:
-           
             import opencv_python_headless
-            sys.modules['cv2'] = sys.modules.get('cv2', opencv_python_headless)
+            sys.modules['cv2'] = opencv_python_headless
             import cv2
         except ImportError:
-            logging.error("opencv-python-headless missing. Please check requirements.txt")
+            logging.error("CRITICAL: opencv-python-headless missing from requirements.txt")
+            raise e
     else:
         raise e
 
+# Streamlit
 import streamlit as st
 import pandas as pd
 import numpy as np
-import cv2
 import json
 import math
 from datetime import datetime
@@ -26,7 +29,9 @@ import folium
 from streamlit_folium import st_folium
 from folium.plugins import HeatMap, MarkerCluster
 
-# Run with: streamlit run app.py
+
+
+
 # UAV SAR MISSION CONTROL SYSTEM | University of Plymouth 2026
 
 # --- PAGE CONFIG ---
