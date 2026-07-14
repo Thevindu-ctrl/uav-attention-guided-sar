@@ -43,7 +43,7 @@ from PIL import Image
 import folium
 from streamlit_folium import st_folium
 from folium.plugins import HeatMap, MarkerCluster
-
+import os
 
 # UAV SAR MISSION CONTROL SYSTEM | University of Plymouth 2026
 
