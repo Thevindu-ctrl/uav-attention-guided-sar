@@ -1,8 +1,3 @@
-import cv2
-    if not hasattr(cv2, 'IMREAD_COLOR'):
-        cv2.IMREAD_COLOR = 1
-    # ... [redacted for brevity] ...
-    sys.modules['cv2'] = mock_cv2
 
 #Imports
 import streamlit as st
