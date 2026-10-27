@@ -12,6 +12,7 @@ import folium
 from streamlit_folium import st_folium
 from folium.plugins import HeatMap, MarkerCluster
 import os
+import cv2
 
 # UAV SAR MISSION CONTROL SYSTEM | University of Plymouth 2026
 
