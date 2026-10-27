@@ -89,7 +89,7 @@ This repository utilizes a clean, flat directory layout to eliminate path confus
 
 You can immediately evaluate the network's capabilities without installing any local code by accessing the live cloud deployment:
 
-* **Live Web App Link:** [uav-attention-guided-sar.streamlit.app](https://uav-attention-guided-sar-yeyixe2zgqcbt98vb2466u.streamlit.app/)
+* **Live Web App Link:** [uav-attention-guided-sar.streamlit.app](https://uav-attention-guided-sar-g4cvszq4ams7vsky3cfsvf.streamlit.app/)
 * **Testing with Custom Data:** You can upload your own high-resolution drone imagery and video streams directly using the drag-and-drop interface elements in the application.
 * **Testing with Included Data:** If you do not have custom aerial footage on hand, you can immediately test the pipeline using the sample assets pre-packaged in the repository. Simply use the interface file browser to select frames from the `data/demo_rgb/` or `data/demo_thermal/` folders to see the attention filters instantly map bounding boxes over small targets.
 
