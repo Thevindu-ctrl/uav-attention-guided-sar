@@ -9,6 +9,3 @@ folium>=0.20.0
 streamlit-folium>=0.27.2
 sahi>=0.12.1
 lapx
-opencv-python-headless
-  libgl1
-  libglib2.0-0
